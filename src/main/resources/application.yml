@@ -1,0 +1,27 @@
+server:
+  port: 5000
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost/RuanJianSheJiDaZuoYe?useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: root
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+# springdoc
+springdoc:
+  swagger-ui:
+    path: /doc-ui
+  api-docs:
+    path: /api-docs
+
+# openAPI
+api:
+  title: demo demo
+  version: 1.0.0
+  description: demo demo
