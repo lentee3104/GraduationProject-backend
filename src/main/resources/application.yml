@@ -4,7 +4,7 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost/RuanJianSheJiDaZuoYe?useSSL=false&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://localhost:3306/GraduationProject?useSSL=false&allowPublicKeyRetrieval=true
     username: root
     password: root
   jpa:
@@ -12,6 +12,22 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      password: 1234
 
 # springdoc
 springdoc:
@@ -25,3 +41,7 @@ api:
   title: demo demo
   version: 1.0.0
   description: demo demo
+
+jwt:
+  secret: ${JWT_SECRET:your-secret-key}
+  expiration: 86400000 # 24 hours
