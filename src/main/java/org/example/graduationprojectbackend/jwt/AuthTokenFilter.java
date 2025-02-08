@@ -1,4 +1,4 @@
-package org.example.graduationprojectbackend.config;
+package org.example.graduationprojectbackend.jwt;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

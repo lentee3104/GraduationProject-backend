@@ -27,7 +27,13 @@ spring:
     redis:
       host: 127.0.0.1
       port: 6379
-      password: 1234
+#      password: 1234
+      timeout: 10000
+
+logging:
+  level:
+    org.springframework.data.redis: DEBUG
+    io.lettuce: DEBUG
 
 # springdoc
 springdoc:

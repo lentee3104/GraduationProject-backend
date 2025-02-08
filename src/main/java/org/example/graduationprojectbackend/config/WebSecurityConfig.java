@@ -1,5 +1,8 @@
 package org.example.graduationprojectbackend.config;
 
+import org.example.graduationprojectbackend.jwt.AuthEntryPointJwt;
+import org.example.graduationprojectbackend.jwt.AuthTokenFilter;
+import org.example.graduationprojectbackend.serviceImpl.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

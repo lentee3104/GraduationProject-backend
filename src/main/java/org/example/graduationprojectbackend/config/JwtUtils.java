@@ -1,7 +1,7 @@
 package org.example.graduationprojectbackend.config;
 
-import org.example.graduationprojectbackend.service.UserDetailsImpl;
 import io.jsonwebtoken.*;
+import org.example.graduationprojectbackend.serviceImpl.UserDetailsImpl;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
