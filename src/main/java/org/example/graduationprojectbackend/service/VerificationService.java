@@ -20,7 +20,7 @@ public class VerificationService {
 
     public void sendVerificationCode(String email) {
         String code = generateVerificationCode();
-        // 将验证码存储到Redis，设置5分钟过期
+        // 将验证码存储到Redis，设置20分钟过期
         redisTemplate.opsForValue().set(
                 EMAIL_CODE_PREFIX + email,
                 code,

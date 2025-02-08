@@ -1,6 +1,6 @@
 package org.example.graduationprojectbackend.entity;
 
 public enum ERole {
-    USER,
-    ADMIN
+    ROLE_USER,
+    ROLE_ADMIN
 }
