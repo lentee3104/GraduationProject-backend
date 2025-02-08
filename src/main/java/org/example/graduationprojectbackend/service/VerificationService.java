@@ -16,7 +16,7 @@ public class VerificationService {
     private EmailService emailService;
 
     private static final String EMAIL_CODE_PREFIX = "email:code:";
-    private static final long CODE_EXPIRE_MINUTES = 5;
+    private static final long CODE_EXPIRE_MINUTES = 20;
 
     public void sendVerificationCode(String email) {
         String code = generateVerificationCode();

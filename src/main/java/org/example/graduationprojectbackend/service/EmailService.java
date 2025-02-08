@@ -12,10 +12,10 @@ public class EmailService {
 
     public void sendVerificationCode(String to, String code) {
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("noreply@example.com");
+        message.setFrom("wy03104@163.com");
         message.setTo(to);
         message.setSubject("Email Verification Code");
-        message.setText("Your verification code is: " + code + "\nThis code will expire in 5 minutes.");
+        message.setText("Your verification code is: " + code + "\nThis code will expire in 20 minutes.");
         mailSender.send(message);
     }
 }
