@@ -56,4 +56,6 @@ api:
 
 jwt:
   secret: ${JWT_SECRET:your-secret-key}
-  expiration: 86400000 # 24 hours
+  expiration: 2073600000 # 24 days
+#  expiration: 86400000 # 24 hours
+
