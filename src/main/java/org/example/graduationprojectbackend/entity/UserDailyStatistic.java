@@ -13,8 +13,8 @@ import java.time.LocalDate;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "model_usage_records")
-public class ModelUsageRecords {
+@Table(name = "user_daily_statistic")
+public class UserDailyStatistic {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,12 +23,14 @@ public class ModelUsageRecords {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @Column(name = "model_id")
-    private Long modelId;
-
     @Column(name = "usage_data")
     private LocalDate usageData;
 
-    @Column(name = "usage_count")
+    @Column(name = "daily_count")
     private Long usageCount;
+
+    @PrePersist
+    protected void onCreate() {
+        usageData = LocalDate.now();
+    }
 }

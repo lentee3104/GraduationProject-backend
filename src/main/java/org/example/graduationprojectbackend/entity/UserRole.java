@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "user_roles")
+@Table(name = "user_role")
 public class UserRole {
     @EmbeddedId
     private UserRoleId id;
@@ -31,10 +31,6 @@ public class UserRole {
     private Role role;
 
     @Column(name = "granted_at")
-    private LocalDateTime grantedAt;
+    private LocalDateTime grantedAt = LocalDateTime.now();
 
-    @PrePersist
-    protected void onCreate() {
-        grantedAt = LocalDateTime.now();
-    }
 }
