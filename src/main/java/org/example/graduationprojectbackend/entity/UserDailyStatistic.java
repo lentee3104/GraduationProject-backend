@@ -23,14 +23,10 @@ public class UserDailyStatistic {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @Column(name = "usage_data")
-    private LocalDate usageData;
+    @Column(name = "usage_date")
+    private LocalDate usageDate = LocalDate.now();
 
     @Column(name = "daily_count")
     private Long usageCount;
 
-    @PrePersist
-    protected void onCreate() {
-        usageData = LocalDate.now();
-    }
 }

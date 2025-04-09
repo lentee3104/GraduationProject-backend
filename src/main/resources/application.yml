@@ -1,5 +1,5 @@
 server:
-  port: 5000
+  port: 8080
 
 spring:
   datasource:
@@ -34,7 +34,7 @@ spring:
       host: 127.0.0.1
       port: 6379
 #      password: 1234
-      timeout: 10000
+      timeout: 20000
 
 logging:
   level:
