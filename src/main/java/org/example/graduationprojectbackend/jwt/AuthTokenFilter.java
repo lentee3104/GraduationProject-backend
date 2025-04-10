@@ -30,6 +30,12 @@ public class AuthTokenFilter extends OncePerRequestFilter {
             throws ServletException, IOException {
         String path = request.getServletPath();
 
+        // 放行所有 OPTIONS 请求
+        if ("OPTIONS".equalsIgnoreCase(request.getMethod())) {
+            filterChain.doFilter(request, response);
+            return;
+        }
+
         // 首先检查是否是公开路径，如果是直接放行
         if (path.startsWith("/api/auth/")) {
             filterChain.doFilter(request, response);

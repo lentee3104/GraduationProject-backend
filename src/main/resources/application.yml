@@ -40,7 +40,10 @@ logging:
   level:
     org.springframework.data.redis: DEBUG
     io.lettuce: DEBUG
-
+    org:
+      springframework:
+        web: DEBUG
+        security: DEBUG
 # springdoc
 springdoc:
   swagger-ui:

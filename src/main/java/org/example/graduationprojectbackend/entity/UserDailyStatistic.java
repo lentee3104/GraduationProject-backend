@@ -10,7 +10,7 @@ import java.time.LocalDate;
 
 @Data
 @Entity
-@Builder
+//@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "user_daily_statistic")

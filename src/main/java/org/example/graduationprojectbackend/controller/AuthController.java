@@ -1,5 +1,6 @@
 package org.example.graduationprojectbackend.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.example.graduationprojectbackend.config.JwtUtils;
 import org.example.graduationprojectbackend.dao.RoleRepository;
 import org.example.graduationprojectbackend.dao.UserRepository;
@@ -16,6 +17,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +27,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+@Slf4j
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/auth")
@@ -54,8 +57,15 @@ public class AuthController {
         String Password = loginRequest.getPassword();
         System.out.println(UserName);
         System.out.println(Password);
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(UserName, Password));
+        Authentication authentication = null;
+        try {
+            authentication = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(UserName, Password));
+        } catch (AuthenticationException e) {
+            log.error("",e);
+            throw new RuntimeException(e
+            );
+        }
 
         System.out.println("1");
 

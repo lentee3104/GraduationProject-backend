@@ -67,7 +67,8 @@ public class WebSecurityConfig {
                 .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/**", "/api/auth/signin", "/api/auth/signup").permitAll()
+                        .requestMatchers( "/api/auth/signin", "/api/auth/signup").permitAll()
+                        .requestMatchers("/api/auth/**").permitAll()
 //                        .requestMatchers("/api/auth/**").permitAll()
 //                        .requestMatchers("/api/auth/signin").permitAll()
 //                        .requestMatchers("/api/auth/signup").permitAll()
@@ -77,7 +78,6 @@ public class WebSecurityConfig {
                 );
 
         http.authenticationProvider(authenticationProvider()); // 配置自定义的 AuthenticationProvider
-
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
