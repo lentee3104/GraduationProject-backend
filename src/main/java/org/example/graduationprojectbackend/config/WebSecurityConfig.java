@@ -28,6 +28,7 @@ import java.util.List;
 @EnableMethodSecurity(prePostEnabled = true) // 启用方法级别的安全控制
 public class WebSecurityConfig {
 
+
     @Autowired
     private UserDetailsServiceImpl userDetailsService;
 
@@ -66,8 +67,9 @@ public class WebSecurityConfig {
                 .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/**").permitAll()
-                        .requestMatchers("/api/auth/signup").permitAll()
+                        .requestMatchers("/api/auth/**", "/api/auth/signin", "/api/auth/signup").permitAll()
+//                        .requestMatchers("/api/auth/signin").permitAll()
+//                        .requestMatchers("/api/auth/signup").permitAll()
 //                        .requestMatchers("/api/test/**").permitAll()
 //                        .requestMatchers("/api/**").permitAll()
                         .anyRequest().authenticated()
