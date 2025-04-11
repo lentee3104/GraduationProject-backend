@@ -69,6 +69,7 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers( "/api/auth/signin", "/api/auth/signup").permitAll()
                         .requestMatchers("/api/auth/**").permitAll()
+//                        .requestMatchers("/api/**").permitAll()
 //                        .requestMatchers("/api/auth/**").permitAll()
 //                        .requestMatchers("/api/auth/signin").permitAll()
 //                        .requestMatchers("/api/auth/signup").permitAll()
@@ -86,13 +87,15 @@ public class WebSecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("*")); // 或者指定具体允许的域名
-        configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-        configuration.setAllowedHeaders(List.of("Authorization", "Cache-Control", "Content-Type"));
-        configuration.setAllowCredentials(true);
+
+        // 允许特定的域名（推荐明确指定域名，避免使用 "*")
+        configuration.setAllowedOrigins(List.of("http://localhost:5173")); // 或者替换为实际的前端地址
+        configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS")); // 允许的 HTTP 方法
+        configuration.setAllowedHeaders(List.of("Authorization", "Cache-Control", "Content-Type")); // 允许的请求头
+        configuration.setAllowCredentials(true); // 允许跨域请求时携带凭证（如 Cookie）
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", configuration);
+        source.registerCorsConfiguration("/**", configuration); // 允许所有路径的跨域请求
         return source;
     }
 }

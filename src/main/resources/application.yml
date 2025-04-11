@@ -62,3 +62,7 @@ jwt:
   expiration: 2073600000 # 24 days
 #  expiration: 86400000 # 24 hours
 
+flask:
+  api:
+    url: 'http://localhost:5000/predict'
+
