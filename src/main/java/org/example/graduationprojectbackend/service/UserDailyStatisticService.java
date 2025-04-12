@@ -14,7 +14,7 @@ public interface UserDailyStatisticService {
     List<UserDailyStatistic> getStatisticsByUserId(Long userId);
 
     // 根据 userId 和日期获取特定的统计数据
-    Optional<UserDailyStatistic> getStatisticByUserIdAndUsageData(Long userId, LocalDate usageData);
+    UserDailyStatistic getStatisticByUserIdAndUsageData(Long userId, LocalDate usageData);
 
     // 根据日期获取所有用户的统计数据
     List<UserDailyStatistic> getStatisticsByUsageData(LocalDate usageData);
@@ -24,4 +24,6 @@ public interface UserDailyStatisticService {
 
     // 删除用户的统计数据
     void deleteUserDailyStatistic(Long id);
+
+    UserDailyStatistic update(Long userId);
 }

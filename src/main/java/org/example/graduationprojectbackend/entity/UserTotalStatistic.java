@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.LastModifiedDate;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -29,7 +30,7 @@ public class UserTotalStatistic {
 
     @LastModifiedDate
     @Column(name = "last_updated", updatable = false)
-    private LocalDateTime lastUpdated;
+    private LocalDate lastUpdated;
 
 
 }

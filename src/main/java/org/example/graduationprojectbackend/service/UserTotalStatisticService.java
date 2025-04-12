@@ -12,4 +12,6 @@ public interface UserTotalStatisticService {
 
     // 删除用户的总统计数据
     void deleteUserTotalStatistic(Long id);
+
+    UserTotalStatistic update(Long userId);
 }

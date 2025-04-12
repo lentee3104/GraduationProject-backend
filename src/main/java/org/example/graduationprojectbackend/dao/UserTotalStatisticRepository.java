@@ -11,5 +11,6 @@ public interface UserTotalStatisticRepository extends JpaRepository<UserTotalSta
 
     // 根据 userId 查找所有的统计数据
     UserTotalStatistic findByUserId(Long userId);
+    UserTotalStatistic save(UserTotalStatistic userTotalStatistic);
 
 }

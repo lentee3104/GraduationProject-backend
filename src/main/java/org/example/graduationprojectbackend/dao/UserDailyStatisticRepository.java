@@ -13,9 +13,11 @@ public interface UserDailyStatisticRepository extends JpaRepository<UserDailySta
     List<UserDailyStatistic> findByUserId(Long userId);
 
     // 根据 userId 和日期查找统计数据
-    Optional<UserDailyStatistic> findByUserIdAndUsageDate(Long userId, LocalDate usageData);
+    UserDailyStatistic findByUserIdAndUsageDate(Long userId, LocalDate usageData);
 
     // 根据日期查找统计数据
     List<UserDailyStatistic> findByUsageDate(LocalDate usageData);
+
+    List<UserDailyStatistic> findAll();
 
 }
