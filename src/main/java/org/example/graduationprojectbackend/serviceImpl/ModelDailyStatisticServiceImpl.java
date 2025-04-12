@@ -20,6 +20,7 @@ public class ModelDailyStatisticServiceImpl implements ModelDailyStatisticServic
         this.modelDailyStatisticRepository = modelDailyStatisticRepository;
     }
 
+
     @Override
     public List<ModelDailyStatistic> findAll() {
         return modelDailyStatisticRepository.findAll();

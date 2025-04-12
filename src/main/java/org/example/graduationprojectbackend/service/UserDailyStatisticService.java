@@ -1,5 +1,6 @@
 package org.example.graduationprojectbackend.service;
 
+import org.example.graduationprojectbackend.dto.UserDailyUsageDto;
 import org.example.graduationprojectbackend.entity.UserDailyStatistic;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +12,7 @@ import java.util.Optional;
 public interface UserDailyStatisticService {
 
     // 根据 userId 获取用户的统计数据
-    List<UserDailyStatistic> getStatisticsByUserId(Long userId);
+    List<UserDailyUsageDto> getStatisticsByUserId(Long userId);
 
     // 根据 userId 和日期获取特定的统计数据
     UserDailyStatistic getStatisticByUserIdAndUsageData(Long userId, LocalDate usageData);

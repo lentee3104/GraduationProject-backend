@@ -30,8 +30,10 @@ public class UpdateAllStatisticController {
 
     @PostMapping("/updateAllStatistic")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-    public ResponseEntity<String> updateAllStatistic(Long userId, Long modelId) throws IOException {
-        String response = updateAllStatisticService.updateAllStatistic(userId, modelId);
+    public ResponseEntity<String> updateAllStatistic(String userId, String modelId) throws IOException {
+        Long userIdNumber = Long.valueOf(userId);
+        Long modelIdNumber = Long.valueOf(modelId);
+        String response = updateAllStatisticService.updateAllStatistic(userIdNumber, modelIdNumber);
         // 判断返回的响应内容来决定 HTTP 状态码
         if (response.equals("success")) {
             // 如果更新成功，返回 200 OK 状态码和成功信息

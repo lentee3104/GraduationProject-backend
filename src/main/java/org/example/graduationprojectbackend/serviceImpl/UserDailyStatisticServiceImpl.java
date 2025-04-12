@@ -3,15 +3,18 @@ package org.example.graduationprojectbackend.serviceImpl;
 import com.fasterxml.jackson.datatype.jsr310.deser.key.LocalDateKeyDeserializer;
 import org.example.graduationprojectbackend.dao.UserDailyStatisticRepository;
 import org.example.graduationprojectbackend.dao.UserRepository;
+import org.example.graduationprojectbackend.dto.UserDailyUsageDto;
 import org.example.graduationprojectbackend.entity.User;
 import org.example.graduationprojectbackend.entity.UserDailyStatistic;
 import org.example.graduationprojectbackend.service.UserDailyStatisticService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class UserDailyStatisticServiceImpl implements UserDailyStatisticService {
@@ -26,8 +29,25 @@ public class UserDailyStatisticServiceImpl implements UserDailyStatisticService 
     }
 
     @Override
-    public List<UserDailyStatistic> getStatisticsByUserId(Long userId) {
-        return userDailyStatisticRepository.findByUserId(userId);
+    public List<UserDailyUsageDto> getStatisticsByUserId(Long userId) {
+        List<UserDailyStatistic> userDailyStatisticList = userDailyStatisticRepository.findByUserId(userId);
+        User user = userRepository.findUserById(userId)
+                .orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + userId));
+        // 使用 Java 8 Stream API 将 UserDailyStatistic 转换为 UserDailyUsageDto
+        List<UserDailyUsageDto> userDailyUsageDtoList = userDailyStatisticList.stream()
+                .map(statistic -> {
+                    // 创建一个新的 UserDailyUsageDto 对象
+                    UserDailyUsageDto dto = new UserDailyUsageDto();
+                    dto.setId(statistic.getId());
+                    dto.setDailyCount(statistic.getUsageCount());
+                    dto.setUsageDate(statistic.getUsageDate());
+                    dto.setUserId(user.getId());
+                    dto.setUserName(user.getUsername());
+                    return dto;  // 返回转换后的 DTO
+                })
+                .collect(Collectors.toList());  // 将转换后的结果收集到一个列表中
+
+        return userDailyUsageDtoList;
     }
 
     @Override
