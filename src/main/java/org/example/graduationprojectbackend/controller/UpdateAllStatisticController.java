@@ -27,7 +27,6 @@ public class UpdateAllStatisticController {
         this.updateAllStatisticService = updateAllStatisticService;
     }
 
-
     @PostMapping("/updateAllStatistic")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public ResponseEntity<String> updateAllStatistic(String userId, String modelId) throws IOException {
