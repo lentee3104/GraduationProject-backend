@@ -79,8 +79,8 @@ public class UserDailyStatisticServiceImpl implements UserDailyStatisticService 
         if (userDailyStatistic == null) {
             userDailyStatistic = new UserDailyStatistic();
             userDailyStatistic.setUser(user);
-            userDailyStatistic.setUsageDate(localDate);
             userDailyStatistic.setUsageCount(1L);
+            userDailyStatistic.setUsageDate(localDate);
             return saveUserDailyStatistic(userDailyStatistic);
 
         } else {
